@@ -1,38 +1,46 @@
-.App {
+body {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  background-color: darkslategrey;
+}
+
+.normalCard {
+  margin: 4em;
+
+  background-color: coral;
+  margin-top: 4em !important;
+  height: 250px !important;
+  width: 250px !important;
+  border-radius: 3em !important;
+  border: 2px solid black !important;
+  color: dimgrey !important;
+}
+
+.bigCard {
+  background-color: coral;
+  margin: 4em auto !important;
+  height: 250px !important;
+  width: 1000px !important;
+  border-radius: 3em !important;
+  border: 2px solid black !important;
+}
+h3 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h3 {
+  margin-top: 10px !important;
+}
+a,
+a:hover {
+  color: rgb(24, 19, 19);
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+p {
+  word-spacing: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bodyCard {
+  margin-top: 30px;
+  text-align: left;
 }
