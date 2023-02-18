@@ -5,7 +5,7 @@ const MyContainer = () => {
   return (
     <Container>
       <Row>
-        <Col xs={8} className="m-2 bigCard justify-content-center">
+        <Col xs={8} className="m-1 bigCard justify-content-baseline">
           <MyCityCard location={"Muravera"} />
         </Col>
         <Col>

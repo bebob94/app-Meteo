@@ -1,38 +1,39 @@
 body {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  background-color: darkslategrey;
+  background-image: url("https://img.freepik.com/free-vector/dark-polygonal-background_1409-878.jpg?size=626&ext=jpg&ga=GA1.2.1995819947.1676719680&semt=sph");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white !important;
 }
 
 .normalCard {
-  margin: 4em;
+  margin: 0 4em;
 
-  background-color: coral;
   margin-top: 4em !important;
-  height: 250px !important;
+  height: 210px !important;
   width: 250px !important;
   border-radius: 3em !important;
-  border: 2px solid black !important;
-  color: dimgrey !important;
+  border: 2px solid white !important;
+  color: black !important;
 }
 
 .bigCard {
-  background-color: coral;
-  margin: 4em auto !important;
-  height: 250px !important;
+  margin: 2em auto !important;
+  height: 200px !important;
   width: 1000px !important;
   border-radius: 3em !important;
-  border: 2px solid black !important;
-}
-h3 {
-  text-align: center;
+  border: 2px solid white !important;
 }
 
 h3 {
-  margin-top: 10px !important;
+  margin: 0 !important;
+  font-weight: 400 !important;
+  text-align: center;
+  color: rgb(36, 161, 161);
 }
 a,
 a:hover {
-  color: rgb(24, 19, 19);
+  color: white;
   text-decoration: none;
 }
 
@@ -43,4 +44,33 @@ p {
 .bodyCard {
   margin-top: 30px;
   text-align: left;
+}
+
+.details {
+  margin-top: 2em;
+
+  box-shadow: 2px 2px 15px 5px;
+  border-radius: 1em;
+}
+
+h1 {
+  display: inline-block;
+
+  color: rgb(4, 197, 197);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+h6 {
+  color: rgb(36, 161, 161);
+  font-weight: 900;
+}
+
+.logo {
+  margin: 0.5em;
+  height: 60px;
+  border-radius: 5em;
+}
+
+.mySearch {
+  margin-left: 200px !important;
 }

@@ -4,6 +4,7 @@ import "./App.css";
 import DetailCard from "./Components/DetailCard";
 import MyContainer from "./Components/MyContainer";
 import MyNavBar from "./Components/MyNavBar";
+import NotFound from "./Components/NotFound";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MyContainer />} />
           <Route path="Detail/:cityName" element={<DetailCard />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

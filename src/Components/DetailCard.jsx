@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import Loading from "./Loading";
+import NotFound from "./NotFound";
 
 const DetailCard = () => {
   let params = useParams();
 
   const [meteoCity, setMeteoCity] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchMeteo = async () => {
@@ -16,8 +20,11 @@ const DetailCard = () => {
         if (response.ok) {
           let data = await response.json();
           setMeteoCity(data);
+          setLoading(false);
+          setError(false);
         } else {
-          alert("error");
+          setLoading(false);
+          setError(true);
         }
       } catch (error) {
         alert(error);
@@ -28,28 +35,77 @@ const DetailCard = () => {
   }, [params.cityName]);
 
   return (
-    <Container>
-      <Row>
-        <h3>
-          {meteoCity.name} <span>{meteoCity.sys?.country}</span>
-        </h3>
+    <>
+      {loading && <Loading />}
+      {error ? (
+        <NotFound />
+      ) : (
+        <Container>
+          <Row>
+            <h3 className="mt-1">
+              {meteoCity.name} <span>{meteoCity.sys?.country}</span>
+            </h3>
 
-        <Col>
-          {" "}
-          <p>
-            {meteoCity.weather?.length > 0 && meteoCity.weather[0].description}
-          </p>
-          <p>{meteoCity.main?.humidity} %</p>
-          <p>{meteoCity.main?.pressure} hPa</p>
-          <p style={{ transform: `rotate(${meteoCity.wind?.deg}deg)` }}> ⬆ </p>
-        </Col>
-        <Col>
-          <p>{meteoCity.wind?.speed} km/h</p>
-          <p>{meteoCity.main?.pressure} hPa</p>
-          <p>{(((meteoCity.main?.temp - 32) * 5) / 9).toFixed()}° C</p>
-        </Col>
-      </Row>
-    </Container>
+            <Col>
+              <ListGroup>
+                <ListGroupItem className="details">
+                  <Row className="justify-content-between">
+                    <Col xs={6}>Meteo:</Col>
+                    <Col xs={1}>
+                      {meteoCity.weather?.length > 0 &&
+                        meteoCity.weather[0].description}
+                    </Col>{" "}
+                  </Row>
+                </ListGroupItem>
+                <ListGroupItem className="details">
+                  <Row className="justify-content-between">
+                    <Col xs={6}>Umidità:</Col>
+                    <Col xs={1}>{meteoCity.main?.humidity}%</Col>
+                  </Row>
+                </ListGroupItem>
+                <ListGroupItem className="details">
+                  <Row className="justify-content-between">
+                    <Col xs={6}>Vento:</Col>
+                    <Col xs={1}>{meteoCity.wind?.speed}km/h</Col>{" "}
+                  </Row>
+                </ListGroupItem>
+                <ListGroupItem className="details">
+                  <Row className="justify-content-between">
+                    <Col xs={6}>Pressione:</Col>
+                    <Col xs={1}>{meteoCity.main?.pressure}hPa</Col>{" "}
+                  </Row>
+                </ListGroupItem>
+                <ListGroupItem className="details">
+                  <Row className="justify-content-between">
+                    <Col xs={6}>Temperatura:</Col>
+                    <Col xs={1}>
+                      {" "}
+                      {(((meteoCity.main?.temp - 32) * 5) / 9).toFixed()}°C
+                    </Col>{" "}
+                  </Row>
+                </ListGroupItem>
+                <ListGroupItem className="details">
+                  <Row className="justify-content-between">
+                    <Col xs={6}>Temperatura minima:</Col>
+                    <Col xs={1}>
+                      {(((meteoCity.main?.temp_min - 32) * 5) / 9).toFixed()}°C
+                    </Col>{" "}
+                  </Row>
+                </ListGroupItem>
+                <ListGroupItem className="details">
+                  <Row className="justify-content-between">
+                    <Col xs={6}>Temperatura massima:</Col>
+                    <Col xs={1}>
+                      {(((meteoCity.main?.temp_max - 32) * 5) / 9).toFixed()}°C
+                    </Col>{" "}
+                  </Row>
+                </ListGroupItem>
+              </ListGroup>
+            </Col>
+          </Row>
+        </Container>
+      )}
+    </>
   );
 };
 
