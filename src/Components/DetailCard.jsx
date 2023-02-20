@@ -19,6 +19,7 @@ const DetailCard = () => {
         );
         if (response.ok) {
           let data = await response.json();
+          console.log(meteoCity);
           setMeteoCity(data);
           setLoading(false);
           setError(false);
@@ -51,7 +52,7 @@ const DetailCard = () => {
                 <ListGroupItem className="details">
                   <Row className="justify-content-between">
                     <Col xs={6}>Meteo:</Col>
-                    <Col xs={1}>
+                    <Col xs={2}>
                       {meteoCity.weather?.length > 0 &&
                         meteoCity.weather[0].description}
                     </Col>{" "}
@@ -60,25 +61,25 @@ const DetailCard = () => {
                 <ListGroupItem className="details">
                   <Row className="justify-content-between">
                     <Col xs={6}>Umidità:</Col>
-                    <Col xs={1}>{meteoCity.main?.humidity}%</Col>
+                    <Col xs={2}>{meteoCity.main?.humidity}%</Col>
                   </Row>
                 </ListGroupItem>
                 <ListGroupItem className="details">
                   <Row className="justify-content-between">
                     <Col xs={6}>Vento:</Col>
-                    <Col xs={1}>{meteoCity.wind?.speed}km/h</Col>{" "}
+                    <Col xs={2}>{meteoCity.wind?.speed}km/h</Col>{" "}
                   </Row>
                 </ListGroupItem>
                 <ListGroupItem className="details">
                   <Row className="justify-content-between">
                     <Col xs={6}>Pressione:</Col>
-                    <Col xs={1}>{meteoCity.main?.pressure}hPa</Col>{" "}
+                    <Col xs={2}>{meteoCity.main?.pressure}hPa</Col>{" "}
                   </Row>
                 </ListGroupItem>
                 <ListGroupItem className="details">
                   <Row className="justify-content-between">
                     <Col xs={6}>Temperatura:</Col>
-                    <Col xs={1}>
+                    <Col xs={2}>
                       {" "}
                       {(((meteoCity.main?.temp - 32) * 5) / 9).toFixed()}°C
                     </Col>{" "}
@@ -87,7 +88,7 @@ const DetailCard = () => {
                 <ListGroupItem className="details">
                   <Row className="justify-content-between">
                     <Col xs={6}>Temperatura minima:</Col>
-                    <Col xs={1}>
+                    <Col xs={2}>
                       {(((meteoCity.main?.temp_min - 32) * 5) / 9).toFixed()}°C
                     </Col>{" "}
                   </Row>
@@ -95,7 +96,7 @@ const DetailCard = () => {
                 <ListGroupItem className="details">
                   <Row className="justify-content-between">
                     <Col xs={6}>Temperatura massima:</Col>
-                    <Col xs={1}>
+                    <Col xs={2}>
                       {(((meteoCity.main?.temp_max - 32) * 5) / 9).toFixed()}°C
                     </Col>{" "}
                   </Row>
